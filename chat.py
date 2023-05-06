@@ -30,17 +30,15 @@ def generate_story(text):
 
 def generate_audio(text, voice):
     """Convert the generated story to audio using the Eleven Labs API."""
-    audio = generate(text=text, voice=voice, api_key=eleven_api_key)
-    return audio
+    return generate(text=text, voice=voice, api_key=eleven_api_key)
 
 
 def generate_images(story_text):
     """Generate images using the story text using the Replicate API."""
-    output = replicate.run(
+    return replicate.run(
         "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
-        input={"prompt": story_text}
+        input={"prompt": story_text},
     )
-    return output
 
 
 def app():
